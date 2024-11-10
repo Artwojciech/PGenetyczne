@@ -24,7 +24,7 @@ public class Tiny {
             MAX_LEN = 10000,
             POPSIZE = 100000,
             DEPTH = 5,
-            GENERATIONS = 50,
+            GENERATIONS = 30,
             TSIZE = 2;
     public static final double
             PMUT_PER_NODE = 0.05,
@@ -383,7 +383,7 @@ public class Tiny {
     }
 
     public static void main(String[] args) {
-        String[] problemFolders = {"problem_1", "problem_2"};
+        String[] problemFolders = {"problem_6"};
         char[] problemFiles = {'a', 'b', 'c', 'd'};
         long s = -1;
 
