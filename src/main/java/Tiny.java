@@ -9,6 +9,8 @@ public class Tiny {
             SUB = 111,
             MUL = 112,
             DIV = 113,
+            SIN = 114,
+            COS = 115,
             FSET_START = ADD,
             FSET_END = DIV;
     static double [] x = new double[FSET_START];
@@ -88,6 +90,16 @@ public class Tiny {
                 a1=print_indiv( buffer, ++buffercounter );
                 System.out.print( " / ");
                 break;
+            case SIN:
+                System.out.print(" SIN (");
+                a1 = print_indiv(buffer, ++buffercounter);
+                System.out.print(")");
+                return a1;
+            case COS:
+                System.out.print(" COS (");
+                a1 = print_indiv(buffer, ++buffercounter);
+                System.out.print(")");
+                return a1;
         }
         a2=print_indiv( buffer, a1 );
         System.out.print( ")");
@@ -223,6 +235,8 @@ public class Tiny {
                             parentcopy[mutsite] =
                                     (char) (rd.nextInt(FSET_END - FSET_START + 1)
                                             + FSET_START);
+                        case SIN:
+                        case COS:
                     }
             }
         }
@@ -286,7 +300,7 @@ public class Tiny {
     }
 
     public static void main(String[] args) {
-        String fname = "src/main/problem.dat";
+        String fname = "problem_1a.dat";
         long s = -1;
 
         if ( args.length == 2 ) {

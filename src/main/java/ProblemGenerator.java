@@ -60,18 +60,18 @@ public class ProblemGenerator{
         List<BigDecimal> fx3Values3 = f3(x3Values3);
         List<BigDecimal> fx3Values4 = f3(x3Values4);
 
-        writeDatFileWith1Arg("problem_1a.dat", x16Values1, fx1Values1);
-        writeDatFileWith1Arg("problem_1b.dat", x16Values2, fx1Values2);
-        writeDatFileWith1Arg("problem_1c.dat", x16Values3, fx1Values3);
-        writeDatFileWith1Arg("problem_1d.dat", x16Values4, fx1Values4);
-        writeDatFileWith1Arg("problem_2a.dat", x25Values1, fx2Values1);
-        writeDatFileWith1Arg("problem_2b.dat", x25Values2, fx2Values2);
-        writeDatFileWith1Arg("problem_2c.dat", x25Values3, fx2Values3);
-        writeDatFileWith1Arg("problem_2d.dat", x25Values4, fx2Values4);
-        writeDatFileWith1Arg("problem_3a.dat", x3Values1, fx3Values1);
-        writeDatFileWith1Arg("problem_3b.dat", x3Values2, fx3Values2);
-        writeDatFileWith1Arg("problem_3c.dat", x3Values3, fx3Values3);
-        writeDatFileWith1Arg("problem_3d.dat", x3Values4, fx3Values4);
+        writeOneArg("problem_1a.dat", x16Values1, fx1Values1);
+        writeOneArg("problem_1b.dat", x16Values2, fx1Values2);
+        writeOneArg("problem_1c.dat", x16Values3, fx1Values3);
+        writeOneArg("problem_1d.dat", x16Values4, fx1Values4);
+        writeOneArg("problem_2a.dat", x25Values1, fx2Values1);
+        writeOneArg("problem_2b.dat", x25Values2, fx2Values2);
+        writeOneArg("problem_2c.dat", x25Values3, fx2Values3);
+        writeOneArg("problem_2d.dat", x25Values4, fx2Values4);
+        writeOneArg("problem_3a.dat", x3Values1, fx3Values1);
+        writeOneArg("problem_3b.dat", x3Values2, fx3Values2);
+        writeOneArg("problem_3c.dat", x3Values3, fx3Values3);
+        writeOneArg("problem_3d.dat", x3Values4, fx3Values4);
 
 
         List<BigDecimal[]> xy4Product1 = cartesianProduct(x4Values1, y4Values1);
@@ -100,18 +100,18 @@ public class ProblemGenerator{
         List<BigDecimal> f6Values3 = f6(xy6Product3);
         List<BigDecimal> f6Values4 = f6(xy6Product4);
 
-        writeDatFileWith2Arg("problem_4a.dat", xy4Product1, f4Values1);
-        writeDatFileWith2Arg("problem_4b.dat", xy4Product2, f4Values2);
-        writeDatFileWith2Arg("problem_4c.dat", xy4Product3, f4Values3);
-        writeDatFileWith2Arg("problem_4d.dat", xy4Product4, f4Values4);
-        writeDatFileWith2Arg("problem_5a.dat", xy5Product1, f5Values1);
-        writeDatFileWith2Arg("problem_5b.dat", xy5Product2, f5Values2);
-        writeDatFileWith2Arg("problem_5c.dat", xy5Product3, f5Values3);
-        writeDatFileWith2Arg("problem_5d.dat", xy5Product4, f5Values4);
-        writeDatFileWith2Arg("problem_6a.dat", xy6Product1, f6Values1);
-        writeDatFileWith2Arg("problem_6b.dat", xy6Product2, f6Values2);
-        writeDatFileWith2Arg("problem_6c.dat", xy6Product3, f6Values3);
-        writeDatFileWith2Arg("problem_6d.dat", xy6Product4, f6Values4);
+        writeTwoArg("problem_4a.dat", xy4Product1, f4Values1);
+        writeTwoArg("problem_4b.dat", xy4Product2, f4Values2);
+        writeTwoArg("problem_4c.dat", xy4Product3, f4Values3);
+        writeTwoArg("problem_4d.dat", xy4Product4, f4Values4);
+        writeTwoArg("problem_5a.dat", xy5Product1, f5Values1);
+        writeTwoArg("problem_5b.dat", xy5Product2, f5Values2);
+        writeTwoArg("problem_5c.dat", xy5Product3, f5Values3);
+        writeTwoArg("problem_5d.dat", xy5Product4, f5Values4);
+        writeTwoArg("problem_6a.dat", xy6Product1, f6Values1);
+        writeTwoArg("problem_6b.dat", xy6Product2, f6Values2);
+        writeTwoArg("problem_6c.dat", xy6Product3, f6Values3);
+        writeTwoArg("problem_6d.dat", xy6Product4, f6Values4);
     }
 
     public static List<BigDecimal> f1(BigDecimal[] xVals) {
@@ -180,7 +180,7 @@ public class ProblemGenerator{
         return values;
     }
 
-    public static void writeDatFileWith1Arg(String filename, BigDecimal[] xVals, List<BigDecimal> funVals) {
+    public static void writeOneArg(String filename, BigDecimal[] xVals, List<BigDecimal> funVals) {
         List<Integer> header = Arrays.asList(1, 100, -20, 20, funVals.size());
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
             writer.write(String.join(" ", header.stream().map(String::valueOf).toArray(String[]::new)) + "\n");
@@ -192,7 +192,7 @@ public class ProblemGenerator{
         }
     }
 
-    public static void writeDatFileWith2Arg(String filename, List<BigDecimal[]> xyVals, List<BigDecimal> funVals) {
+    public static void writeTwoArg(String filename, List<BigDecimal[]> xyVals, List<BigDecimal> funVals) {
         List<Integer> header = Arrays.asList(2, 100, -20, 20, funVals.size());
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
             writer.write(String.join(" ", header.stream().map(String::valueOf).toArray(String[]::new)) + "\n");

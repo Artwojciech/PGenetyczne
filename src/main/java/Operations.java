@@ -17,6 +17,10 @@ class Operations {
                 else
                     return (num / den);
             }
+            case Tiny.SIN:
+                return (Math.sin(run()));
+            case Tiny.COS:
+                return (Math.cos(run()));
         }
         return (0.0); // should never get here
     }
@@ -31,6 +35,8 @@ class Operations {
             case Tiny.MUL:
             case Tiny.DIV:
                 return (traverse(buffer, traverse(buffer, ++buffercount)));
+            case Tiny.SIN:
+            case Tiny.COS:
         }
         return (0); // should never get here
     }
