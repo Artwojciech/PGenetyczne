@@ -1,5 +1,8 @@
-class Operations {
-    static double run() {
+public class Operations {
+    public static double run() {
+        if (Tiny.PC >= Tiny.program.length) {
+            return 0.0; // Zabezpieczenie przed przekroczeniem długości programu
+        }
         char primitive = Tiny.program[Tiny.PC++];
         if (primitive < Tiny.FSET_START)
             return (Tiny.x[primitive]);
@@ -10,6 +13,10 @@ class Operations {
                 return (run() - run());
             case Tiny.MUL:
                 return (run() * run());
+            case Tiny.SIN:
+                return Math.sin(run());
+            case Tiny.COS:
+                return Math.cos(run());
             case Tiny.DIV: {
                 double num = run(), den = run();
                 if (Math.abs(den) <= 0.001)
@@ -17,15 +24,15 @@ class Operations {
                 else
                     return (num / den);
             }
-            case Tiny.SIN:
-                return (Math.sin(run()));
-            case Tiny.COS:
-                return (Math.cos(run()));
         }
-        return (0.0); // should never get here
+        return (0.0); // Nigdy tu nie dotrze
     }
 
-    static int traverse(char[] buffer, int buffercount) {
+    public static int traverse(char[] buffer, int buffercount) {
+        if (buffercount >= buffer.length) {
+            return buffercount;
+        }
+
         if (buffer[buffercount] < Tiny.FSET_START)
             return (++buffercount);
 
@@ -34,10 +41,12 @@ class Operations {
             case Tiny.SUB:
             case Tiny.MUL:
             case Tiny.DIV:
-                return (traverse(buffer, traverse(buffer, ++buffercount)));
+                int left = traverse(buffer, ++buffercount);
+                return traverse(buffer, left);
             case Tiny.SIN:
             case Tiny.COS:
+                return traverse(buffer, ++buffercount);
         }
-        return (0); // should never get here
+        return (++buffercount); // Dla nieznanych operatorów
     }
 }
