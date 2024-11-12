@@ -383,7 +383,7 @@ public class Tiny {
     }
 
     public static void main(String[] args) {
-        String[] problemFolders = {"problem_5"};
+        String[] problemFolders = {"problem_6"};
         char[] problemFiles = {'a', 'b', 'c', 'd'};
         long s = -1;
 
