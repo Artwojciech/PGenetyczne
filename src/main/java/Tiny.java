@@ -61,7 +61,7 @@ public class Tiny {
                     return( grow( buffer, one_child, max,depth-1 ) );
             }
         }
-        return( 0 ); // should never get here
+        return( 0 );
     }
 
     int print_indiv( char []buffer, int buffercounter ) {
@@ -106,7 +106,6 @@ public class Tiny {
         return( a2);
     }
 
-
     static char [] buffer = new char[MAX_LEN];
     char [] create_random_indiv( int depth ) {
         char [] ind;
@@ -133,7 +132,6 @@ public class Tiny {
         }
         return( pop );
     }
-
 
     void stats( double [] fitness, char [][] pop, int gen ) {
         int i, best = rd.nextInt(POPSIZE);
@@ -314,4 +312,4 @@ public class Tiny {
         Tiny gp = new Tiny(fname, s);
         gp.evolve();
     }
-};
+}
